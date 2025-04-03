@@ -2,12 +2,18 @@
 #include <memory>
 #include <type_traits>
 
-#include <Cabana_Core.hpp>
 #include <Kokkos_Core.hpp>
-#include <NuMesh_Core.hpp>
+#include <mpi.h>
 
-int main()
+int main(int argc, char* argv[])
 {
-	printf("Hi\n");
+  MPI_Init( &argc, &argv );
+  Kokkos::initialize( argc, argv );
+
+  printf("Hi\n");
+  
+  Kokkos::finalize();
+  MPI_Finalize();
+	
 	return 0;
 }

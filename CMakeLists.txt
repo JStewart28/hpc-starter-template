@@ -45,26 +45,12 @@ endif()
 set(gtest_disable_pthreads ON CACHE BOOL "")
 include(${BLT_SOURCE_DIR}/SetupBLT.cmake)
 
-# Tell CMAKE to find MPIAdvance
-find_package(MPI_Advance REQUIRED)
-
-# Tell CMAKE to find NuMesh
-find_package(NuMesh REQUIRED)
-if (NuMesh_FOUND)
-  include_directories(${NuMesh_INCLUDE_DIRS})
-else()
-  message(FATAL_ERROR "NuMesh not found!")
-endif()
-
 # We also need MPI for this example
 find_package(MPI REQUIRED)
 
 # find dependencies
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
-# Include MPI_Advance
-# set( MPI_Advance_PREFIX "~/executables/mpi_advance" CACHE PATH "")
-# find_package(MPI_Advance REQUIRED)
 
 ##---------------------------------------------------------------------------##
 ## Get the dependent packages we need: Cabana, Silo, and ClangFormat         ##
